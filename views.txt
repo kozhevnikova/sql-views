@@ -1,0 +1,8 @@
+Task:
+Create a SQL query to return next data ordered by city and then by name:
+| Employy Id | Employee Full Name | Title | City |
+[Employee Full Name] - First Name and Last Name.
+
+Solution:
+select EmployeeID, concat(FirstName, LastName) AS FullName, Title, City from Employees order by City
+select EmployeeID, concat(FirstName, LastName) AS FullName, Title, City from Employees order by FullName
