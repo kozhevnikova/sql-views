@@ -13,3 +13,15 @@ Create a query to return all customers from USA without Fax:
 
 Solution:
 select CustomerID, CompanyName from Customers where Country = 'USA' and Fax IS NULL
+
+Task:
+Create a query to return:
+| Customer Id | Total number of Orders | % of all orders |
+order data by % - higher percent at the top.
+
+Solution:
+select C.CustomerID, (Count(O.OrderId)*100)/(select count(*) from Orders) as PercentOfAllOrders from  Customers C 
+	full outer join Orders O 
+	on O.CustomerID=C.CustomerID 
+	group by C.CustomerID
+	Order by PercentOfAllOrders DESC
