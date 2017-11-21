@@ -49,6 +49,6 @@ Create a query to return a list ordered by order id descending:
 | Order Id | Order Total Price | Total Order Discount, % |
 
 Solution:
-select O.OrderID, sum(OD.UnitPrice) as TotalCount, sum(OD.Discount)*100 as TotalDiscount from Orders O
-	join [Order Details] OD on O.OrderID=OD.OrderID
-	group by O.OrderId
+select OrderID, sum(UnitPrice) as TotalCount, sum(Discount)*100 as TotalDiscount from [Order Details]
+	group by OrderId 
+	order by OrderID DESC
