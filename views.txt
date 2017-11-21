@@ -25,3 +25,11 @@ select C.CustomerID, (Count(O.OrderId)*100)/(select count(*) from Orders) as Per
 	on O.CustomerID=C.CustomerID 
 	group by C.CustomerID
 	Order by PercentOfAllOrders DESC
+
+Task:
+Return all products where product name starts with 'A', 'B', .... 'F' ordered by name.
+| ProductId | ProductName | QuantityPerUnit |
+
+Solution:
+select ProductID,ProductName,QuantityPerUnit from Products 
+	order by ProductName
