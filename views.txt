@@ -33,3 +33,13 @@ Return all products where product name starts with 'A', 'B', .... 'F' ordered by
 Solution:
 select ProductID,ProductName,QuantityPerUnit from Products 
 	order by ProductName
+
+Task:
+Create a query to return all products with category and supplier company names:
+| ProductName | CategoryName | SupplierCompanyName |
+
+Solution:
+select P.ProductName, C.CategoryName, S.CompanyName as SupplierCompanyName from Products P 
+	join Categories C on P.CategoryID=C.CategoryID
+	join Suppliers S on P.SupplierID=S.SupplierID
+	
