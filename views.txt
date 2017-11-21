@@ -6,3 +6,10 @@ Create a SQL query to return next data ordered by city and then by name:
 Solution:
 select EmployeeID, concat(FirstName, LastName) AS FullName, Title, City from Employees order by City
 select EmployeeID, concat(FirstName, LastName) AS FullName, Title, City from Employees order by FullName
+
+Task:
+Create a query to return all customers from USA without Fax:
+| CustomerId | CompanyName |
+
+Solution:
+select CustomerID, CompanyName from Customers where Country = 'USA' and Fax IS NULL
