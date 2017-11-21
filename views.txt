@@ -1,4 +1,4 @@
-Task:
+Task1:
 Create a SQL query to return next data ordered by city and then by name:
 | Employy Id | Employee Full Name | Title | City |
 [Employee Full Name] - First Name and Last Name.
@@ -7,14 +7,14 @@ Solution:
 select EmployeeID, concat(FirstName, LastName) AS FullName, Title, City from Employees order by City
 select EmployeeID, concat(FirstName, LastName) AS FullName, Title, City from Employees order by FullName
 
-Task:
+Task2:
 Create a query to return all customers from USA without Fax:
 | CustomerId | CompanyName |
 
 Solution:
 select CustomerID, CompanyName from Customers where Country = 'USA' and Fax IS NULL
 
-Task:
+Task3:
 Create a query to return:
 | Customer Id | Total number of Orders | % of all orders |
 order data by % - higher percent at the top.
@@ -26,7 +26,7 @@ select C.CustomerID, count(O.OrderID) as TotalNumberOfOrders, (count(O.OrderID)*
 	group by C.CustomerID
 	order by PercentOfAllOrders DESC
 
-Task:
+Task4:
 Return all products where product name starts with 'A', 'B', .... 'F' ordered by name.
 | ProductId | ProductName | QuantityPerUnit |
 
@@ -34,7 +34,7 @@ Solution:
 select ProductID,ProductName,QuantityPerUnit from Products 
 	order by ProductName
 
-Task:
+Task5:
 Create a query to return all products with category and supplier company names:
 | ProductName | CategoryName | SupplierCompanyName |
 
@@ -44,7 +44,7 @@ select P.ProductName, C.CategoryName, S.CompanyName as SupplierCompanyName from 
 	join Suppliers S on P.SupplierID=S.SupplierID
 	
 
-Task:
+Task6:
 Create a query to return a list ordered by order id descending:
 | Order Id | Order Total Price | Total Order Discount, % |
 
