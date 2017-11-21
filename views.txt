@@ -20,9 +20,9 @@ Create a query to return:
 order data by % - higher percent at the top.
 
 Solution:
-select C.CustomerID, count(O.OrderID) as TotalNumberOfOrders, (count(O.OrderID)*100)/(select count(*) from Orders) as PercentOfAllOrders from  Customers C 
-	join Orders O 
-	on O.CustomerID=C.CustomerID 
+select C.CustomerID, count(O.OrderID) as TotalNumberOfOrders, 
+	cast ((count(O.OrderID)*100) as float)/cast((select count(*) from Orders) as float) as PercentOfAllOrders from  Customers C 
+	join Orders O on O.CustomerID=C.CustomerID 
 	group by C.CustomerID
 	order by PercentOfAllOrders DESC
 
