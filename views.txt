@@ -43,3 +43,12 @@ select P.ProductName, C.CategoryName, S.CompanyName as SupplierCompanyName from 
 	join Categories C on P.CategoryID=C.CategoryID
 	join Suppliers S on P.SupplierID=S.SupplierID
 	
+
+Task:
+Create a query to return a list ordered by order id descending:
+| Order Id | Order Total Price | Total Order Discount, % |
+
+Solution:
+select O.OrderID, sum(OD.UnitPrice) as TotalCount, sum(OD.Discount)*100 as TotalDiscount from Orders O
+	join [Order Details] OD on O.OrderID=OD.OrderID
+	group by O.OrderId
