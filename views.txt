@@ -21,7 +21,7 @@ order data by % - higher percent at the top.
 
 Solution:
 select C.CustomerID, (Count(O.OrderId)*100)/(select count(*) from Orders) as PercentOfAllOrders from  Customers C 
-	full outer join Orders O 
+	join Orders O 
 	on O.CustomerID=C.CustomerID 
 	group by C.CustomerID
 	Order by PercentOfAllOrders DESC
