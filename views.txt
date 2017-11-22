@@ -61,6 +61,9 @@ Order data by first column.
 Reports To - Full name. If the employee does not report to anybody leave "-" in the column.
 
 Solution:
+select E.EmployeeID, concat(E.FirstName, E.LastName) as FullName, ISNULL((EM.FirstName+''+EM.LastName),'-') as ReportsTo 
+	from Employees E
+	left join Employees EM on E.ReportsTo = EM.EmployeeID 
 
 Task8:
 Create a query to return:
