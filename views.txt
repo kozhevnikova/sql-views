@@ -52,3 +52,66 @@ Solution:
 select OrderID, sum(UnitPrice) as TotalCount, sum(Discount)*100 as TotalDiscount from [Order Details]
 	group by OrderId 
 	order by OrderID DESC
+
+Task7:
+Create a query to return all employees and full name of person to whom this employee reports to:
+| EmployeeId | FullName | ReportsTo |
+Full Name - title of courtesy with full name.
+Order data by first column.
+Reports To - Full name. If the employee does not report to anybody leave "-" in the column.
+
+Solution:
+
+Task8:
+Create a query to return:
+| CategoryName | TotalNumberOfProducts |
+
+Solution:
+select C.CategoryName, sum(P.ProductID) as Total from Categories C
+	join Products P on C.CategoryID=P.CategoryID
+	group by C.CategoryName
+
+Task9:
+Create a SQL query to find those customers whose contact name containing 
+the 1st character is 'F' and the 4th character is 'n' and rests may be any character.
+| CustomerId | ContactName |
+
+Solution:
+select CustomerID, ContactName from Customers
+where ContactName like 'F__n%'
+
+Task10:
+Write a query to get discontinued Product list:
+| ProductId | Name | 
+
+Solution:
+select P.ProductID, P.ProductName from Products P
+where P.Discontinued <> 0
+order by P.ProductID
+
+Task11:
+Create a SQL query to get Product list (name, unit price) where products cost between $5 and $15:
+| ProductName | UnitPrice |
+
+Solution:
+select P.ProductName, O.UnitPrice from Products P
+join [Order Details] O on O.ProductID=P.ProductID
+where O.UnitPrice between 5 and 15
+
+Task12:
+Write a SQL query to get Product list of twenty most expensive products:
+| ProductName | UnitPrice |
+Order products by price.
+
+Solution:
+select top 20 ProductName, UnitPrice from Products
+order by UnitPrice DESC
+
+Task13:
+Create a SQL query to count current and discontinued products:
+| TotalOfCurrentProducts | TotalOfDiscontinuedProducts |
+
+Solution:
+select count(Discontinued) as TotalOfCurrentProducts,
+(select count(Discontinued) from Products where Discontinued <> 0) as TotalOfDiscontinuedProducts
+from Products 
