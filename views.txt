@@ -115,3 +115,11 @@ Solution:
 select count(Discontinued) as TotalOfCurrentProducts,
 (select count(Discontinued) from Products where Discontinued <> 0) as TotalOfDiscontinuedProducts
 from Products 
+
+Task14:
+Create a SQL query to get Product list of stock is less than the quantity on order:
+| ProductName | UnitsInOrder| UnitsInStock |
+
+Solution:
+select P.ProductName, P.UnitsInStock, P.UnitsOnOrder from Products P
+where P.unitsInStock < P.UnitsOnOrder
