@@ -154,3 +154,13 @@ Solution:
 select C.CategoryName, avg(P.UnitPrice) as AvgPrice from Categories C
 join Products P on C.CategoryID=P.CategoryID
 group by C.CategoryName
+
+Task18:
+Create a SQL query to calcualte total orders count by each day in 1998:
+| Order Date | Total Number of Orders |
+
+Solution:
+select DATENAME(d,OrderDate) as OrderDate, count(OrderID) from Orders
+where OrderDate between '1998-01-01' and '1998-12-31'
+group by DATENAME(d,OrderDate)
+order by OrderDate
